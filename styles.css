@@ -1,0 +1,95 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@font-face {
+    font-family: Dense;
+    src: url(../fonts/Dense-Regular.otf);
+}
+
+@font-face {
+    font-family: John;
+    src: url(../fonts/Big-John.otf);
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url(../fonts/AvenirNextLTPro-Regular.otf);
+}
+
+* {
+    transition-duration: .5s;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-align: center;
+    line-height: 1.6;
+    font: 100% Avenir, sans-serif;
+}
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #333;
+}
+
+input:focus {
+    color: #2c3e50;
+    outline: none;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+#enterColor {
+    position: absolute;
+    background-color: #fff;
+    z-index: 1;
+    color: #333;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    width: 400px;
+    font-size: 28px;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Avenir;
+    transition-duration: .1s;
+}
+
+.stripe {
+    height: 100%;
+    float: left;
+    width: calc(100vw / 6);
+    position: relative;
+    padding-top: 50vh;
+}
+
+.stripe p {
+    transform: rotateZ(-90deg);
+    -moz-transform: rotateZ(-90deg);
+    -webkit-transform: rotateZ(-90deg);
+    font-size: 25px;
+    margin-left: calc(100vh / 12 - 90px);
+    font-family: John;
+}
+
+.str-top {
+    margin-top: -25vh;
+}
+
+.str-bottom {
+    margin-top: 25vh;
+}
