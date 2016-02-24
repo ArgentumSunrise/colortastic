@@ -8,6 +8,19 @@ $(document).ready(function () {
         finalHex = val != "" ? hex : '#fff';
         $(this).css('background-color', finalHex);
         console.log(mode);
+        if (hexToRgb(hex)[0] + hexToRgb(hex)[1] + hexToRgb(hex)[2] > 382 || val === "") {
+            $('#enterColor').css({
+                'border-color': "#000",
+                'color': "#000"
+            });
+            $('#options').css('color', '#000');
+        } else {
+            $('#enterColor').css({
+                'border-color': "#fff",
+                'color': "#fff"
+            });
+            $('#options').css('color', '#fff');
+        }
         switch (mode) {
         case 0:
             $('#container').css('background-color', finalHex);
@@ -63,10 +76,8 @@ function shadeStripes(hex) {
         $('#str' + i).css('background-color', rgbToHex(Math.ceil(r + step), Math.ceil(g + step), Math.ceil(b + step)));
         if (r + g + b < 382) {
             $('.stripe').css('color', '#fff');
-            $('#enterColor').css('border-color', "#fff");
         } else {
             $('.stripe').css('color', '#000');
-            $('#enterColor').css('border-color', "#000");
         }
     }
 }
