@@ -1,24 +1,52 @@
 $(document).ready(function () {
-    var val;
-    var hex;
-    var finalHex;
+    var val, hex, finalHex;
+    var mode = 0;
     $('#enterColor').keyup(function (e) {
         val = document.getElementById("enterColor").value;
-        console.log(val);
         hex = '#';
         hex += val.toString();
         finalHex = val != "" ? hex : '#fff';
         $(this).css('background-color', finalHex);
-        shadeStripes(val);
+        console.log(mode);
+        switch (mode) {
+        case 0:
+            $('#container').css('background-color', finalHex);
+            break;
+
+        case 1:
+            complementary(finalHex);
+            break;
+
+        case 2:
+            shadeStripes(val);
+            break;
+        };
+
     });
 
-    $('.stripe').mouseenter(function () {
-        var cl = parseInt($(this).attr('id').charAt(3)) % 2 == 0 ? "top" : "bottom";
-        $(this).html('<p class="str-' + cl + '">' + $(this).css('background-color') + "</p>");
-    });
+    if (mode === 2) {
+        $('.stripe').mouseenter(function () {
+            var cl = parseInt($(this).attr('id').charAt(3)) % 2 == 0 ? "top" : "bottom";
+            $(this).html('<p class="str-' + cl + '">' + $(this).css('background-color') + "</p>");
+        });
+    }
 
     $('.stripe').mouseleave(function () {
         $(this).html("");
+    })
+
+    $('#norm').click(function () {
+        mode = 0;
+        $('#container').children().css('background-color', 'transparent');
+    })
+
+    $('#comp').click(function () {
+        mode = 1;
+    })
+
+    $('#pick').click(function () {
+        mode = 2;
+        $('#container').children().css('background-color', 'transparent');
     })
 })
 
@@ -41,6 +69,19 @@ function shadeStripes(hex) {
             $('#enterColor').css('border-color', "#000");
         }
     }
+}
+
+function complementary(hex) {
+    var rgb = hexToRgb(hex),
+        r = complement(rgb[0]),
+        g = complement(rgb[1]),
+        b = complement(rgb[2]);
+    $('#container').css('background-color', rgbToHex(r, g, b));
+
+}
+
+function complement(i) {
+    return 255 - i;
 }
 
 function rgbToHex(r, g, b) {

@@ -50,13 +50,17 @@ input:focus {
     position: relative;
 }
 
-#enterColor {
+#enterColor,
+#options {
     position: absolute;
+    left: 50%;
+}
+
+#enterColor {
     background-color: #fff;
     z-index: 1;
     color: #333;
     top: 50%;
-    left: 50%;
     margin-left: -200px;
     transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -92,4 +96,19 @@ input:focus {
 
 .str-bottom {
     margin-top: 25vh;
+}
+
+#options {
+    font-family: Avenir;
+    width: 425px;
+    display: table;
+    margin-left: -212px;
+    margin-top: 56vh;
+    font-size: 8px;
+    /* address this in media query */
+}
+
+.option {
+    display: table-cell;
+    cursor: pointer;
 }
