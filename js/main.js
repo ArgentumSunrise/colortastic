@@ -4,13 +4,12 @@ $(document).ready(function () {
     var finalHex;
     $('#enterColor').keyup(function (e) {
         val = document.getElementById("enterColor").value;
-        val = val ? val : '#fff';
+        console.log(val);
         hex = '#';
         hex += val.toString();
-        finalHex = val ? hex : '#fff';
+        finalHex = val != "" ? hex : '#fff';
         $(this).css('background-color', finalHex);
         shadeStripes(val);
-        console.log(hex);
     });
 
     $('.stripe').mouseenter(function () {
@@ -29,25 +28,17 @@ function shadeStripes(hex) {
         g = rgb[1],
         b = rgb[2];
     console.log("R: " + r + " G: " + g + " B: " + b);
-    var lowBound = (2 / 3) * (r < g && r < b) ? r : (b < g) ? b : g;
-    var highBound = -30 + (r > g && r > b) ? r : (b > g) ? b : g;
-    lowBound = (lowBound < 0 ? 0 : lowBound);
-    highBound = (highBound > 255 ? 255 : highBound);
+    var lowest = (r < g && r < b) ? r : (b < g) ? b : g;
+    var highest = (r > g && r > b) ? r : (b > g) ? b : g;
     for (i = 1; i <= 6; i++) {
-        var step = (lowBound * -1) + (lowBound * (i / 6)); // : highBound - (highBound * (i / 6));
+        step = (255 - highest < lowest) ? 255 - highest - ((255 - highest) * (i / 3)) : (-1 * lowest) + (i / 3) * lowest;
         $('#str' + i).css('background-color', rgbToHex(Math.ceil(r + step), Math.ceil(g + step), Math.ceil(b + step)));
         if (r + g + b < 382) {
             $('.stripe').css('color', '#fff');
-            $('#enterColor').css({
-                'border-color': "#fff",
-                'color': "#fff"
-            });
+            $('#enterColor').css('border-color', "#fff");
         } else {
             $('.stripe').css('color', '#000');
-            $('#enterColor').css({
-                'border-color': "#000",
-                'color': "#000"
-            });
+            $('#enterColor').css('border-color', "#000");
         }
     }
 }

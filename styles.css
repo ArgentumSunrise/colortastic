@@ -16,7 +16,7 @@
 }
 
 * {
-    transition-duration: .5s;
+    transition: .5s ease;
 }
 
 html,
@@ -66,7 +66,7 @@ input:focus {
     padding: 20px 0;
     text-align: center;
     font-family: Avenir;
-    transition-duration: .1s;
+    transition-duration: .3s;
 }
 
 .stripe {
