@@ -119,6 +119,7 @@ function boxColor(color, isComp) {
         'color': txtColor
     });
     $('#options').css('color', color);
+    $('#auth').css('color', color);
 }
 
 function optimColors(rgb, isComp) {

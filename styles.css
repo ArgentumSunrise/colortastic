@@ -51,10 +51,30 @@ input:focus {
 }
 
 #enterColor,
-#options {
+#options,
+#auth {
     position: absolute;
-    left: 50%;
     transition-duration: .3s;
+}
+
+#auth {
+    font-family: John;
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 10px;
+    line-height: 0.5;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+#auth h2 {
+    font-family: Avenir;
+    font-size: 15px;
+}
+
+#enterColor,
+#options {
+    left: 50%;
 }
 
 #enterColor {
