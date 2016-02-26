@@ -2,17 +2,17 @@
 @import url(http://fonts.googleapis.com/css?family=Lato);
 @font-face {
     font-family: Dense;
-    src: url(../fonts/Dense-Regular.otf);
+    src: url(fonts/Dense-Regular.otf);
 }
 
 @font-face {
     font-family: John;
-    src: url(../fonts/Big-John.otf);
+    src: url(fonts/Big-John.otf);
 }
 
 @font-face {
     font-family: Avenir;
-    src: url(../fonts/AvenirNextLTPro-Regular.otf);
+    src: url(fonts/AvenirNextLTPro-Regular.otf);
 }
 
 * {
