@@ -128,6 +128,8 @@ function boxColor(color, isComp) {
     });
     $('#options').css('color', color);
     $('#auth').css('color', color);
+    var newSrc = color == "#000" ? "title.png" : "title-white.png";
+    $('#auth img').attr('src', newSrc);
 }
 
 function optimColors(rgb, isComp) {
