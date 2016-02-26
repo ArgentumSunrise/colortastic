@@ -6,38 +6,33 @@ $(document).ready(function () {
         hex = '#';
         hex += val.toString();
         finalHex = val != "" ? hex : '#fff';
-        val === "" ? boxColor('#000') : false;
-        var rgb = hexToRgb(val);
+        val === "" ? boxColor('#000', "") : false;
         $('#enterColor').css('background-color', finalHex);
+        optimColors(hexToRgb(val), "");
         switch (mode) {
         case 0:
             $('#container').css('background-color', finalHex);
             break;
 
         case 1:
-            complementary(finalHex);
+            var complement = val === "" ? 'fff' : complementary(finalHex);
+            optimColors(hexToRgb(complement), "000");
+            $('#container').css('background-color', complement);
             break;
 
         case 2:
             shadeStripes(val);
+            if (val === "") {
+                $('.stripe', '.container').css('background-color', '#fff');
+            }
+            $('.stripe').mouseenter(function () {
+                var cl = parseInt($(this).attr('id').charAt(3)) % 2 == 0 ? "top" : "bottom";
+                $(this).html('<p class="str-' + cl + '">' + $(this).css('background-color') + "</p>");
+            });
             break;
         };
-        if (rgb) {
-            if (rgb.b + rgb.g + rgb.r > 382) {
-                boxColor('#000');
-            } else if (rgb.b + rgb.g + rgb.r < 382) {
-                boxColor('#fff');
-            }
-        }
 
     });
-
-    if (mode === 2) {
-        $('.stripe').mouseenter(function () {
-            var cl = parseInt($(this).attr('id').charAt(3)) % 2 == 0 ? "top" : "bottom";
-            $(this).html('<p class="str-' + cl + '">' + $(this).css('background-color') + "</p>");
-        });
-    }
 
     $('.stripe').mouseleave(function () {
         $(this).html("");
@@ -80,12 +75,14 @@ function shadeStripes(hex) {
 }
 
 function complementary(hex) {
-    var rgb = hexToRgb(hex),
-        r = complement(rgb.r),
-        g = complement(rgb.g),
-        b = complement(rgb.b);
-    $('#container').css('background-color', rgbToHex(r, g, b));
-
+    var color = hex;
+    color = color.substring(1);
+    color = parseInt(color, 16);
+    color = 0xFFFFFF ^ color;
+    color = color.toString(16);
+    color = ("000000" + color).slice(-6);
+    color = "#" + color;
+    return color;
 }
 
 function complement(i) {
@@ -115,10 +112,21 @@ function hexToRgb(hex) {
     } : null;
 }
 
-function boxColor(color) {
+function boxColor(color, isComp) {
+    var txtColor = isComp != "" ? isComp : color;
     $('#enterColor').css({
         'border-color': color,
-        'color': color
+        'color': txtColor
     });
     $('#options').css('color', color);
+}
+
+function optimColors(rgb, isComp) {
+    if (rgb) {
+        if (rgb.b + rgb.g + rgb.r > 382) {
+            boxColor('#000', isComp);
+        } else {
+            boxColor('#fff', isComp);
+        }
+    }
 }
