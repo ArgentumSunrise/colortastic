@@ -51,10 +51,31 @@ input:focus {
 }
 
 #enterColor,
-#options {
+#options,
+#auth {
     position: absolute;
-    left: 50%;
     transition-duration: .3s;
+}
+
+#auth {
+    font-family: John;
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 10px;
+    line-height: 0.5;
+    font-size: 15px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+#auth h2 {
+    font-family: Avenir;
+    font-size: 15px;
+}
+
+#enterColor,
+#options {
+    left: 50%;
 }
 
 #enterColor {
@@ -105,10 +126,35 @@ input:focus {
     margin-left: -212px;
     margin-top: 56vh;
     font-size: 8px;
-    /* address this in media query */
 }
 
 .option {
     display: table-cell;
     cursor: pointer;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
+    .stripe {
+        height: calc(100vh / 6);
+        float: left;
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        position: relative;
+    }
+    .stripe p {
+        display: none;
+    }
+    #enterColor {
+        padding: 12px 0;
+        width: 250px;
+        margin-left: -125px;
+    }
+    #options {
+        margin-top: 56vh;
+        display: block;
+    }
+    .option {
+        display: block;
+    }
 }

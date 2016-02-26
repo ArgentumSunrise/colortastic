@@ -32,6 +32,23 @@
 
 <body>
     <div id='container'>
+        <div id='auth'>
+            <h1>COLORTASTIC</h1>
+            <h2>A project by Colter Giem</h2>
+            <a href="https://twitter.com/ColterGiem" class="twitter-follow-button" data-show-count="false">Follow @ColterGiem</a>
+            <script>
+                ! function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0],
+                        p = /^http:/.test(d.location) ? 'http' : 'https';
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = p + '://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');
+            </script>
+        </div>
         <div class='stripe' id='str1'></div>
         <div class='stripe' id='str2'></div>
         <div class='stripe' id='str3'></div>
