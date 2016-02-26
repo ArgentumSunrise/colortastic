@@ -58,18 +58,16 @@ input:focus {
 }
 
 #auth {
-    font-family: John;
     text-align: left;
     padding-left: 20px;
-    padding-top: 10px;
+    padding-top: 20px;
     line-height: 0.5;
-    font-size: 15px;
     box-sizing: border-box;
     z-index: 1;
 }
 
 #auth img {
-    max-height: 15px;
+    max-height: 30px;
 }
 
 #auth h2 {
