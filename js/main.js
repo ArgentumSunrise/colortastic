@@ -51,6 +51,11 @@ $(document).ready(function () {
         mode = 2;
         $('#container').children().css('background-color', 'transparent');
     })
+
+    $('#options h1').click(function () {
+        $(this).css('color', '#c0392b');
+        $(this).siblings().css('color', '#000');
+    })
 })
 
 function shadeStripes(hex) {
