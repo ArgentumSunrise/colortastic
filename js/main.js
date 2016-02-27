@@ -15,7 +15,7 @@ $(document).ready(function () {
             break;
 
         case 1:
-            var complement = val === "" ? 'fff' : complementary(finalHex);
+            var complement = (val === "" ? 'fff' : complementary(finalHex));
             optimColors(hexToRgb(complement), "000");
             $('#container').css('background-color', complement);
             break;
@@ -53,12 +53,9 @@ $(document).ready(function () {
     })
 
     $('#options h1').click(function () {
-        var rgb = hexToRgb(val != "" && val != undefined ? val : 'fff');
-        var col = rgb.b + rgb.g + rgb.r > 382 ? "#000" : "#fff";
-        $(this).css('color', '#c0392b');
-        $(this).siblings().css('color', col);
-        console.log(col);
+        $(this).addClass('selected').siblings().removeClass('selected');
     })
+
 })
 
 function shadeStripes(hex) {

@@ -135,6 +135,10 @@ input:focus {
     cursor: pointer;
 }
 
+.selected {
+    color: #c0392b;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
     .stripe {
         height: calc(100vh / 6);
@@ -158,5 +162,8 @@ input:focus {
     }
     .option {
         display: block;
+    }
+    #auth img {
+        max-height: 23px;
     }
 }
